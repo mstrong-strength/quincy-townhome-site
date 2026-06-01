@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { property } from '../data/property';
+import logo from '../assets/logo.png';
 
 const links = [
   { href: '#photos', label: 'Photos' },
@@ -13,10 +15,9 @@ const links = [
 
 <header class="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-md">
   <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8" aria-label="Primary">
-    <!-- Wordmark logo -->
-    <a href="#top" class="flex shrink-0 items-baseline gap-2 leading-none" aria-label={`${property.name} home`}>
-      <span class="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">Quincy</span>
-      <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-brand-dark sm:text-xs">Townhomes</span>
+    <!-- Logo -->
+    <a href="#top" class="flex shrink-0 items-center" aria-label={`${property.name} home`}>
+      <Image src={logo} alt="Quincy Townhomes" widths={[180, 280, 360]} sizes="180px" loading="eager" class="h-9 w-auto sm:h-10" />
     </a>
 
     <!-- Desktop links -->

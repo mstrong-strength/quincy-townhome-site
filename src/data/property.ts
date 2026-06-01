@@ -107,10 +107,12 @@ export const property = {
   // ⚠️ Mark each unit available/leased and confirm which are open before go-live.
   availability: {
     legend: [
-      { label: 'Unit 1 floorplan', swatch: '#f4c6d4' },
-      { label: 'Unit 2 floorplan (3 bed)', swatch: '#bfe3ec' },
+      { label: 'Available', swatch: '#22c55e' },
+      { label: 'Leased', swatch: '#ef4444' },
+      { label: 'Unit 1', swatch: '#f4c6d4' },
+      { label: 'Unit 2 (3 bed)', swatch: '#bfe3ec' },
     ],
-    note: 'Site plan colors indicate floorplan type. Unit availability is confirmed at the time of inquiry.',
+    note: 'Green units are available now; red are leased. Colors also indicate floorplan type (Unit 1 / Unit 2).',
     units: [
       // Placeholder list — replace with the real available units.
       { unit: '4372 S 900 E #101', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
