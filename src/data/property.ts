@@ -25,15 +25,18 @@ export const property = {
 
   // Quick facts strip
   beds: '3 Beds',
-  baths: tbd('Baths'),          // ⚠️ confirm bath count
+  baths: ok('2.5'),             // confirmed: 2.5 baths
   sqft: tbd('Sq Ft'),           // ⚠️ confirm square footage
   rent: '$2,499',
   rentSuffix: '/mo',
   rentNote: 'Starting at',
 
-  manager: 'Rize Property Management',
-  phone: '(385) 448-5127',
-  phoneHref: 'tel:+13854485127',
+  // Footer only — "Property Managed by RIZE". Do not surface elsewhere.
+  managedBy: 'Property Managed by RIZE',
+  // Leasing / showing line — call or text to tour.
+  phone: '(801) 810-4663',
+  phoneHref: 'tel:+18018104663',
+  smsHref: 'sms:+18018104663',
   email: tbd('leasing email'),  // ⚠️ confirm contact email
 
   yearBuilt: 'New construction (2025–2026)',
@@ -45,6 +48,10 @@ export const property = {
     get total() {
       return this.cleaning + this.leaseInit;
     },
+  },
+  securityDeposit: 1299, // refundable
+  get dueAtMoveIn() {
+    return this.moveInFees.total + this.securityDeposit;
   },
   leaseLength: tbd('lease term'),  // ⚠️ likely 12 months — confirm
   applicationFee: tbd('application fee'), // ⚠️ confirm
@@ -106,9 +113,9 @@ export const property = {
     note: 'Site plan colors indicate floorplan type. Unit availability is confirmed at the time of inquiry.',
     units: [
       // Placeholder list — replace with the real available units.
-      { unit: '4372 S 900 E #101', beds: '3', baths: 'TBD', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
-      { unit: '4372 S 900 E #102', beds: '3', baths: 'TBD', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
-      { unit: '4380 S 900 E #101', beds: '3', baths: 'TBD', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      { unit: '4372 S 900 E #101', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      { unit: '4372 S 900 E #102', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      { unit: '4380 S 900 E #101', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
     ],
     isPlaceholder: true, // ⚠️ remove once real availability is entered
   },

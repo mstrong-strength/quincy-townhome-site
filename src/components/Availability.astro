@@ -53,8 +53,9 @@ const { availability } = property;
             </li>
           ))}
         </ul>
-        <a href={property.links.schedule} target="_blank" rel="noopener"
-          class="mt-4 inline-block text-sm font-semibold text-brand-dark hover:underline">Don't see what you need? Schedule a showing →</a>
+        <p class="mt-4 text-sm text-ink-soft">
+          To tour a home, <a href={property.phoneHref} class="font-semibold text-brand-dark hover:underline">call or text {property.phone}</a>.
+        </p>
       </div>
     </div>
   </div>

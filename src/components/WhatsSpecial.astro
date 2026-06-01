@@ -29,8 +29,8 @@ import livingImg from '../assets/photos/06-living-balcony.jpg';
         </p>
       </div>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href={property.links.schedule} target="_blank" rel="noopener"
-          class="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">Schedule a Showing</a>
+        <a href={property.phoneHref}
+          class="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">Call or text to tour: {property.phone}</a>
         <a href={property.links.matterport} target="_blank" rel="noopener"
           class="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand-dark">View 3D Tour</a>
       </div>
