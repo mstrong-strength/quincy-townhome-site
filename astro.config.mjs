@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // Update `site` to the final production URL before go-live (Netlify subdomain or custom domain).
 export default defineConfig({
-  site: 'https://quincy-townhomes.netlify.app',
+  site: 'https://quincytownhomes.netlify.app',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
