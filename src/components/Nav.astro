@@ -1,0 +1,96 @@
+---
+import { property } from '../data/property';
+
+const links = [
+  { href: '#photos', label: 'Photos' },
+  { href: '#tour', label: '3D Tour' },
+  { href: '#availability', label: 'Availability' },
+  { href: '#floorplan', label: 'Floorplan' },
+  { href: '#neighborhood', label: 'Neighborhood' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8" aria-label="Primary">
+    <!-- Wordmark logo -->
+    <a href="#top" class="flex shrink-0 items-baseline gap-2 leading-none" aria-label={`${property.name} home`}>
+      <span class="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">Quincy</span>
+      <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-brand-dark sm:text-xs">Townhomes</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden items-center gap-7 lg:flex">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} class="text-sm font-medium text-ink-soft transition-colors hover:text-brand-dark">{l.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="hidden items-center gap-3 md:flex">
+      <span class="hidden text-right text-xs leading-tight text-ink-soft xl:block">{property.manager}</span>
+      <a
+        href={property.links.apply}
+        target="_blank"
+        rel="noopener"
+        class="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-ink shadow-sm transition-transform hover:scale-[1.03]"
+        >Apply Now</a
+      >
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      id="navToggle"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-ink lg:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden border-t border-line bg-paper lg:hidden">
+    <ul class="mx-auto max-w-7xl px-5 py-3">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} class="block border-b border-line/60 py-3 text-base font-medium text-ink" data-nav-link>{l.label}</a>
+        </li>
+      ))}
+      <li class="pt-4">
+        <a
+          href={property.links.apply}
+          target="_blank"
+          rel="noopener"
+          class="block rounded-full bg-brand px-4 py-3 text-center text-base font-semibold text-ink"
+          >Apply Now</a
+        >
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function close() {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+    }
+    btn.addEventListener('click', function () {
+      var open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    menu.querySelectorAll('[data-nav-link]').forEach(function (a) {
+      a.addEventListener('click', close);
+    });
+  })();
+</script>

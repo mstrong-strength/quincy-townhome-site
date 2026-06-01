@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import { property } from '../data/property';
+import heroImg from '../assets/photos/01-hero-exterior.jpg';
+---
+
+<section id="top" class="relative isolate min-h-[88svh] w-full overflow-hidden bg-ink">
+  <Image
+    src={heroImg}
+    alt="Exterior of a brand-new three-story Quincy townhome with modern black-and-white siding, attached garage, and a young tree against a clear blue sky"
+    widths={[640, 960, 1280, 1920, 2560]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 -z-10 h-full w-full object-cover"
+  />
+  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink/85 via-ink/45 to-ink/35"></div>
+
+  <div class="mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-28 lg:px-8 lg:pb-24">
+    <!-- 2 Months Free ribbon -->
+    <div class="mb-5">
+      <span
+        class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 text-sm font-bold uppercase tracking-wide text-ink shadow-lg"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.39 4.84 5.34.78-3.86 3.77.91 5.32L12 14.98l-4.78 2.51.91-5.32L4.27 8.4l5.34-.78z"/></svg>
+        {property.offer}
+      </span>
+    </div>
+
+    <h1 class="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+      Quincy<br /><span class="text-brand">Townhomes</span>
+    </h1>
+    <p class="mt-5 max-w-xl text-lg font-medium text-white/90 sm:text-xl">{property.tagline}</p>
+    <p class="mt-2 text-sm font-medium uppercase tracking-[0.18em] text-white/70">
+      {property.address.full}
+    </p>
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <a
+        href="#availability"
+        class="inline-flex items-center justify-center rounded-full bg-brand px-7 py-3.5 text-base font-semibold text-ink shadow-lg transition-transform hover:scale-[1.03]"
+        >View Availability</a
+      >
+      <a
+        href={property.links.apply}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center rounded-full border-2 border-white/70 bg-white/5 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-ink"
+        >Apply Now</a
+      >
+    </div>
+  </div>
+</section>

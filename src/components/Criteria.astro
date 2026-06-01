@@ -1,0 +1,26 @@
+---
+import { property } from '../data/property';
+const items = [
+  { label: 'Income', value: property.criteria.income, icon: 'M3 21h18M5 21V7l7-4 7 4v14M9 9h2m2 0h2m-6 4h2m2 0h2m-6 4h2m2 0h2' },
+  { label: 'Credit', value: property.criteria.credit, icon: 'M2 7h20M2 12h20M6 17h4' },
+  { label: 'Pets', value: property.criteria.pets, icon: 'M4.5 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM9 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4.5 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 22c3 0 5-1.5 5-4s-2-5-5-5-5 2.5-5 5 2 4 5 4Z' },
+];
+---
+<section class="border-y border-line bg-sand">
+  <div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <h2 class="reveal mb-8 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">Application criteria</h2>
+    <div class="grid gap-5 sm:grid-cols-3">
+      {items.map((it) => (
+        <div class="reveal flex items-start gap-4 rounded-2xl border border-line bg-white p-6 shadow-sm">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand-dark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d={it.icon}/></svg>
+          </span>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-ink-soft">{it.label}</p>
+            <p class="mt-1 font-medium text-ink">{it.value}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

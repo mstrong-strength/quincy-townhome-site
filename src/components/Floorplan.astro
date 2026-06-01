@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import l1 from '../assets/floorplans/level-1.jpg';
+import l2 from '../assets/floorplans/level-2.jpg';
+import l3 from '../assets/floorplans/level-3.jpg';
+const levels = [
+  { id: 'l1', label: 'Level 1', img: l1, alt: 'Level 1 floorplan of the three-bedroom Quincy townhome, including the attached garage and entry' },
+  { id: 'l2', label: 'Level 2', img: l2, alt: 'Level 2 floorplan showing the open-concept kitchen, living room, and balcony' },
+  { id: 'l3', label: 'Level 3', img: l3, alt: 'Level 3 floorplan showing the three upstairs bedrooms, bathrooms, and laundry' },
+];
+---
+<section id="floorplan" class="scroll-mt-20 bg-paper">
+  <div class="mx-auto max-w-5xl px-5 py-20 lg:px-8 lg:py-24">
+    <header class="reveal mb-8 max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dark">Floorplan</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Three levels, three bedrooms</h2>
+      <p class="mt-3 text-ink-soft">A garage-entry main level, an open second floor for living, and bedrooms up top.</p>
+    </header>
+
+    <div class="reveal" data-floorplan>
+      <div class="flex gap-2 rounded-full border border-line bg-sand p-1" role="tablist" aria-label="Floorplan levels">
+        {levels.map((lv, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${lv.id}`}
+            aria-controls={`panel-${lv.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-fp-tab={lv.id}
+            class={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${i === 0 ? 'bg-white text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
+          >{lv.label}</button>
+        ))}
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-2xl border border-line bg-white p-4 shadow-sm">
+        {levels.map((lv, i) => (
+          <div id={`panel-${lv.id}`} role="tabpanel" aria-labelledby={`tab-${lv.id}`} data-fp-panel={lv.id} class={i === 0 ? '' : 'hidden'}>
+            <Image src={lv.img} alt={lv.alt} widths={[480, 768, 1024]} sizes="(min-width:1024px) 60vw, 90vw" loading="lazy" class="mx-auto w-full max-w-3xl" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var root = document.querySelector('[data-floorplan]');
+    if (!root) return;
+    var tabs = root.querySelectorAll('[data-fp-tab]');
+    var panels = root.querySelectorAll('[data-fp-panel]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var id = tab.getAttribute('data-fp-tab');
+        tabs.forEach(function (t) {
+          var active = t === tab;
+          t.setAttribute('aria-selected', String(active));
+          t.classList.toggle('bg-white', active);
+          t.classList.toggle('text-ink', active);
+          t.classList.toggle('shadow-sm', active);
+          t.classList.toggle('text-ink-soft', !active);
+        });
+        panels.forEach(function (p) {
+          p.classList.toggle('hidden', p.getAttribute('data-fp-panel') !== id);
+        });
+      });
+    });
+  })();
+</script>

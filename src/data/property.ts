@@ -1,0 +1,125 @@
+/**
+ * Single source of truth for all property facts.
+ * Edit THIS file to update the live site — every section reads from here.
+ *
+ * ⚠️  Fields marked `TBD: true` render a small placeholder badge on the page so
+ *     nothing ships as a silent guess. Fill in the value and set TBD to false
+ *     (or just replace the string) before go-live. Search this file for "TBD".
+ */
+
+export type Maybe = { value: string; TBD?: boolean };
+const tbd = (value: string): Maybe => ({ value, TBD: true });
+const ok = (value: string): Maybe => ({ value });
+
+export const property = {
+  name: 'Quincy Townhomes',
+  tagline: 'Brand new. 2 months free. Move in tomorrow.',
+  offer: '2 Months Free',
+  offerLong: 'Special offer: 2 months free, starts now.',
+
+  address: {
+    street: '4372 S 900 E',
+    cityStateZip: 'Millcreek, UT 84124',
+    full: '4372 S 900 E, Millcreek, UT 84124',
+  },
+
+  // Quick facts strip
+  beds: '3 Beds',
+  baths: tbd('Baths'),          // ⚠️ confirm bath count
+  sqft: tbd('Sq Ft'),           // ⚠️ confirm square footage
+  rent: '$2,499',
+  rentSuffix: '/mo',
+  rentNote: 'Starting at',
+
+  manager: 'Rize Property Management',
+  phone: '(385) 448-5127',
+  phoneHref: 'tel:+13854485127',
+  email: tbd('leasing email'),  // ⚠️ confirm contact email
+
+  yearBuilt: 'New construction (2025–2026)',
+
+  // Lease & move-in
+  moveInFees: {
+    cleaning: 350,
+    leaseInit: 275,
+    get total() {
+      return this.cleaning + this.leaseInit;
+    },
+  },
+  leaseLength: tbd('lease term'),  // ⚠️ likely 12 months — confirm
+  applicationFee: tbd('application fee'), // ⚠️ confirm
+  availableDate: tbd('available date'),   // ⚠️ confirm move-in availability
+
+  // Application criteria
+  criteria: {
+    income: '3× rent in gross monthly income',
+    credit: '520+ credit score',
+    pets: 'Pets welcome — up to 2 cats or dogs',
+  },
+
+  // What you'll pay
+  ownerPays: ['Landscaping', 'Snow removal'],
+  tenantPays: [
+    { label: 'Electric', note: 'billed on usage' },
+    { label: 'Water / Sewer / Trash', amount: '$110/mo' },
+    { label: 'Common Area Maintenance', amount: '$30/mo' },
+    { label: 'Utility billing fee', amount: '$11/mo' },
+    { label: 'Resident Benefits Package', amount: '$27/mo', note: 'credit building, identity protection, rewards' },
+    { label: "Renter's insurance", note: 'resident responsible' },
+  ],
+
+  features: [
+    'Open floor plan — kitchen opens to living room',
+    "Chef's kitchen with stainless steel appliances + breakfast bar",
+    'High ceilings',
+    'Three bedrooms upstairs',
+    'In-unit washer & dryer — not shared, not coin-op',
+    'Central air conditioning',
+    'Attached private garage',
+    'Private balcony / patio',
+    'Dishwasher',
+  ],
+
+  links: {
+    apply: 'https://rizehomesource.appfolio.com/apply/db09d67a-04c8-452b-9185-df6ef2176d4c/start',
+    schedule: 'https://showmojo.com/bb74a770b1/l/p/59398?utm_medium=cpc&utm_source=zillow&zgRef=zillow',
+    matterport: 'https://my.matterport.com/show/?m=jP6iviyneq9',
+    maps: 'https://maps.google.com/?q=4372+S+900+E,+Millcreek,+UT+84124',
+  },
+
+  neighborhood: [
+    'Foothills setting in Millcreek, just off 900 E',
+    '~15 minutes to downtown Salt Lake City',
+    'Quick access to I-215, I-80, and I-15',
+    'Close to Big & Little Cottonwood Canyons — Brighton, Solitude, Alta, Snowbird',
+    'Walkable to local restaurants, coffee, and Millcreek Common',
+    'Granite School District',
+  ],
+
+  // Availability — site plan legend + units.
+  // ⚠️ Mark each unit available/leased and confirm which are open before go-live.
+  availability: {
+    legend: [
+      { label: 'Unit 1 floorplan', swatch: '#f4c6d4' },
+      { label: 'Unit 2 floorplan (3 bed)', swatch: '#bfe3ec' },
+    ],
+    note: 'Site plan colors indicate floorplan type. Unit availability is confirmed at the time of inquiry.',
+    units: [
+      // Placeholder list — replace with the real available units.
+      { unit: '4372 S 900 E #101', beds: '3', baths: 'TBD', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      { unit: '4372 S 900 E #102', beds: '3', baths: 'TBD', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      { unit: '4380 S 900 E #101', beds: '3', baths: 'TBD', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+    ],
+    isPlaceholder: true, // ⚠️ remove once real availability is entered
+  },
+
+  // Footer brokerage attribution — ⚠️ confirm name + license # of record
+  brokerage: tbd('Brokerage of record + license #'),
+
+  disclaimers: [
+    'Photos are of a similar home and not necessarily the exact home available for rent. Please inquire by scheduling a tour.',
+    'All information contained in this advertisement is deemed reliable but is not guaranteed. Applicants are solely responsible for verifying the accuracy and completeness of all details provided.',
+  ],
+};
+
+export { tbd, ok };

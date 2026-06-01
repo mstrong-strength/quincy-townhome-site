@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+/* ---- Brand theme (Tailwind v4 CSS-first config) ---------------------------
+   Accent pulled from the Quincy Townhomes logo (cyan-blue). The architecture
+   is modern black-and-white, so we pair a near-black "ink" with the cyan. */
+@theme {
+  --color-brand: #1aa3db;        /* logo cyan — fills, badges, accents */
+  --color-brand-dark: #0e7aa6;   /* AA-safe for text/links on white */
+  --color-brand-darker: #0a5d80;
+  --color-ink: #15181c;          /* near-black, modern facade */
+  --color-ink-soft: #3f464d;
+  --color-paper: #ffffff;
+  --color-sand: #f6f4f1;         /* warm neutral background */
+  --color-line: #e7e3dd;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* offset sticky nav for anchor jumps */
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Visible focus for keyboard users */
+:where(a, button, input, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Fade-in on scroll (progressively enhanced; content is visible without JS) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+.no-js .reveal { opacity: 1; transform: none; }

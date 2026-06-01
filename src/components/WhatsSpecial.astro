@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { property } from '../data/property';
+import openImg from '../assets/photos/03-kitchen-living-open.jpg';
+import livingImg from '../assets/photos/06-living-balcony.jpg';
+---
+<section class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+  <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <div class="reveal">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dark">Brand-new in Millcreek</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
+        Everything is new. Everything is yours.
+      </h2>
+      <div class="mt-6 space-y-5 text-lg leading-relaxed text-ink-soft">
+        <p>
+          Picture this: you step through your private garage into a home that wasn't here six months ago.
+          Everything is brand new. Everything is yours.
+        </p>
+        <p>
+          The kitchen opens to the living room — no walls interrupting conversations or sightlines.
+          Three bedrooms upstairs, each one designed like you'd actually live there (because you will).
+        </p>
+        <p>
+          Your own washer and dryer. Not shared. Not coin-operated. Just&hellip; there.
+        </p>
+        <p class="font-medium text-ink">
+          The catch? There isn't one — except that someone else is reading this right now too.
+          Tour it today. Move in tomorrow.
+        </p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={property.links.schedule} target="_blank" rel="noopener"
+          class="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">Schedule a Showing</a>
+        <a href={property.links.matterport} target="_blank" rel="noopener"
+          class="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand-dark">View 3D Tour</a>
+      </div>
+    </div>
+
+    <div class="reveal grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
+      <Image src={openImg} alt="Open-concept main floor: a chef's kitchen with a quartz waterfall island and pendant lights flows into a bright living area with light wood floors" widths={[480, 768, 1024]} sizes="(min-width:1024px) 40vw, (min-width:640px) 45vw, 90vw" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md" />
+      <Image src={livingImg} alt="Living room with light wood flooring and a sliding glass door opening onto a private balcony" widths={[480, 768, 1024]} sizes="(min-width:1024px) 40vw, (min-width:640px) 45vw, 90vw" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md" />
+    </div>
+  </div>
+
+  <!-- Feature chips -->
+  <ul class="reveal mt-16 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+    {property.features.map((f) => (
+      <li class="flex items-start gap-3 text-ink-soft">
+        <svg class="mt-1 shrink-0 text-brand-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>{f}</span>
+      </li>
+    ))}
+  </ul>
+</section>

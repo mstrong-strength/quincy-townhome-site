@@ -1,0 +1,25 @@
+---
+import { property } from '../data/property';
+import Tbd from './Tbd.astro';
+
+const facts = [
+  { label: 'Bedrooms', value: '3', tbd: false },
+  { label: 'Bathrooms', value: property.baths.value, tbd: !!property.baths.TBD },
+  { label: 'Starting rent', value: `${property.rent}${property.rentSuffix}`, tbd: false },
+  { label: 'Construction', value: 'Brand new', tbd: false },
+  { label: 'Offer', value: '2 months free', tbd: false },
+  { label: 'Pets', value: 'Welcome', tbd: false },
+];
+---
+<section aria-label="Quick facts" class="border-y border-line bg-sand">
+  <div class="mx-auto grid max-w-7xl grid-cols-2 divide-line sm:grid-cols-3 lg:grid-cols-6">
+    {facts.map((f, i) => (
+      <div class={`px-5 py-6 text-center ${i % 2 === 0 ? 'border-r' : ''} border-line sm:border-r ${i >= 6 - 1 ? '' : ''}`}>
+        <div class="text-lg font-semibold text-ink sm:text-xl">
+          {f.tbd ? <Tbd label={f.value} /> : f.value}
+        </div>
+        <div class="mt-1 text-xs font-medium uppercase tracking-wider text-ink-soft">{f.label}</div>
+      </div>
+    ))}
+  </div>
+</section>

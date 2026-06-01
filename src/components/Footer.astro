@@ -1,0 +1,46 @@
+---
+import { property } from '../data/property';
+import Tbd from './Tbd.astro';
+const year = 2026;
+---
+<footer class="border-t border-line bg-paper">
+  <div class="mx-auto max-w-7xl px-5 py-14 lg:px-8">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div>
+        <a href="#top" class="flex items-baseline gap-2 leading-none">
+          <span class="font-display text-xl font-semibold tracking-tight text-ink">Quincy</span>
+          <span class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-brand-dark">Townhomes</span>
+        </a>
+        <p class="mt-3 text-sm text-ink-soft">{property.address.full}</p>
+        <p class="mt-1 text-sm text-ink-soft">
+          {property.manager} · <a href={property.phoneHref} class="font-medium text-brand-dark hover:underline">{property.phone}</a>
+        </p>
+      </div>
+
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Footer">
+        <a href="#photos" class="text-ink-soft hover:text-brand-dark">Photos</a>
+        <a href="#tour" class="text-ink-soft hover:text-brand-dark">3D Tour</a>
+        <a href="#availability" class="text-ink-soft hover:text-brand-dark">Availability</a>
+        <a href="#floorplan" class="text-ink-soft hover:text-brand-dark">Floorplan</a>
+        <a href="#neighborhood" class="text-ink-soft hover:text-brand-dark">Neighborhood</a>
+        <a href="#contact" class="text-ink-soft hover:text-brand-dark">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Disclaimers -->
+    <div class="mt-10 space-y-2 border-t border-line pt-6 text-xs leading-relaxed text-ink-soft/80">
+      {property.disclaimers.map((d) => <p>{d}</p>)}
+    </div>
+
+    <div class="mt-6 flex flex-col gap-4 border-t border-line pt-6 text-xs text-ink-soft/80 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Equal Housing Opportunity mark -->
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-ink-soft" aria-label="Equal Housing Opportunity" role="img"><title>Equal Housing Opportunity</title><path d="M3 11 12 4l9 7"/><path d="M5 10v9h14v-9"/><rect x="10" y="13" width="4" height="6"/></svg>
+        <span>Equal Housing Opportunity</span>
+      </div>
+      <p>
+        © {year} {property.name}. Brokerage of record: <Tbd label={property.brokerage.value} />
+      </p>
+    </div>
+  </div>
+</footer>
