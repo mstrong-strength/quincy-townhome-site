@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import { property } from '../data/property';
-import openImg from '../assets/photos/03-kitchen-living-open.jpg';
-import livingImg from '../assets/photos/06-living-balcony.jpg';
+import openImg from '../assets/photos/04-open-kitchen-living.jpg';
+import livingImg from '../assets/photos/06-living-room.jpg';
 ---
 <section class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
   <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -37,8 +37,8 @@ import livingImg from '../assets/photos/06-living-balcony.jpg';
     </div>
 
     <div class="reveal grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
-      <Image src={openImg} alt="Open-concept main floor: a chef's kitchen with a quartz waterfall island and pendant lights flows into a bright living area with light wood floors" widths={[480, 768, 1024]} sizes="(min-width:1024px) 40vw, (min-width:640px) 45vw, 90vw" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md" />
-      <Image src={livingImg} alt="Living room with light wood flooring and a sliding glass door opening onto a private balcony" widths={[480, 768, 1024]} sizes="(min-width:1024px) 40vw, (min-width:640px) 45vw, 90vw" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md" />
+      <Image src={openImg} alt="Furnished open-concept main floor: a chef's kitchen with a quartz waterfall island and pendant lights flows into a staged living and dining area with light wood floors" widths={[480, 768, 1024]} sizes="(min-width:1024px) 40vw, (min-width:640px) 45vw, 90vw" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md" />
+      <Image src={livingImg} alt="Staged living room with a sofa, glass coffee table, and area rug, open to the kitchen and staircase" widths={[480, 768, 1024]} sizes="(min-width:1024px) 40vw, (min-width:640px) 45vw, 90vw" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md" />
     </div>
   </div>
 

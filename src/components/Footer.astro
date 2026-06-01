@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import { property } from '../data/property';
-import Tbd from './Tbd.astro';
 import logo from '../assets/logo-badge.png';
 const year = 2026;
 ---
@@ -39,9 +38,7 @@ const year = 2026;
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-ink-soft" aria-label="Equal Housing Opportunity" role="img"><title>Equal Housing Opportunity</title><path d="M3 11 12 4l9 7"/><path d="M5 10v9h14v-9"/><rect x="10" y="13" width="4" height="6"/></svg>
         <span>Equal Housing Opportunity</span>
       </div>
-      <p>
-        © {year} {property.name}. Brokerage of record: <Tbd label={property.brokerage.value} />
-      </p>
+      <p>© {year} {property.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>

@@ -123,9 +123,6 @@ export const property = {
     isPlaceholder: false,
   },
 
-  // Footer brokerage attribution — ⚠️ confirm name + license # of record
-  brokerage: tbd('Brokerage of record + license #'),
-
   disclaimers: [
     'Photos are of a similar home and not necessarily the exact home available for rent. Please inquire by scheduling a tour.',
     'All information contained in this advertisement is deemed reliable but is not guaranteed. Applicants are solely responsible for verifying the accuracy and completeness of all details provided.',

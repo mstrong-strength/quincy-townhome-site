@@ -1,54 +1,54 @@
 ---
 import { Image, getImage } from 'astro:assets';
-import exterior from '../assets/photos/02-exterior-facade.jpg';
-import kOpen from '../assets/photos/03-kitchen-living-open.jpg';
-import kIsland from '../assets/photos/04-kitchen-island.jpg';
-import kPendants from '../assets/photos/05-kitchen-pendants.jpg';
-import living from '../assets/photos/06-living-balcony.jpg';
-import bed1 from '../assets/photos/07-bedroom-window.jpg';
-import bed2 from '../assets/photos/08-bedroom-dual-window.jpg';
-import bathShower from '../assets/photos/09-bathroom-shower.jpg';
-import stair from '../assets/photos/10-stairwell-window.jpg';
-import closet from '../assets/photos/11-walk-in-closet.jpg';
+import extSide from '../assets/photos/02-exterior-side.jpg';
+import extPath from '../assets/photos/03-exterior-path.jpg';
+import openKL from '../assets/photos/04-open-kitchen-living.jpg';
+import openConcept from '../assets/photos/05-open-concept.jpg';
+import livingRoom from '../assets/photos/06-living-room.jpg';
+import kitchenDining from '../assets/photos/07-kitchen-dining.jpg';
+import primaryBed from '../assets/photos/08-primary-bedroom.jpg';
+import bedroom2 from '../assets/photos/09-bedroom.jpg';
+import office from '../assets/photos/10-office-flex.jpg';
+import bathShower from '../assets/photos/11-bathroom-shower.jpg';
 import bathTub from '../assets/photos/12-bathroom-tub.jpg';
-import laundry from '../assets/photos/13-laundry-hookup.jpg';
+import closet from '../assets/photos/13-walk-in-closet.jpg';
 
 const groups = [
   {
     title: 'Exterior',
     items: [
-      { src: exterior, alt: 'Modern three-story townhome facade with black-and-white siding and an attached two-car garage under a clear sky' },
+      { src: extSide, alt: 'Side view of the Quincy townhomes with modern black-and-white siding, private balconies, and a brick base under a clear blue sky' },
+      { src: extPath, alt: 'Landscaped walkway alongside the townhomes with fresh plantings, a paved path, and a privacy fence' },
     ],
   },
   {
     title: 'Living & Kitchen',
     items: [
-      { src: kOpen, alt: "Open-concept main floor where the chef's kitchen flows into a bright living area with light wood floors" },
-      { src: kIsland, alt: 'Kitchen with a white quartz waterfall island, stainless steel appliances, and dark wood cabinetry' },
-      { src: kPendants, alt: 'Close-up of the kitchen island and three black Edison-bulb pendant lights above the quartz countertop' },
-      { src: living, alt: 'Living room with light wood flooring and a sliding glass door to a private balcony' },
+      { src: openKL, alt: "Furnished open-concept main floor: a chef's kitchen with a quartz waterfall island and pendant lights flowing into a staged living and dining area with light wood floors" },
+      { src: openConcept, alt: 'Open-concept layout from the living area toward the kitchen, staged with a sofa, dining table, and breakfast-bar seating' },
+      { src: livingRoom, alt: 'Staged living room with a sofa, glass coffee table, and area rug, open to the kitchen and staircase' },
+      { src: kitchenDining, alt: 'Kitchen island and living area furnished, with a dining nook beside the sliding door to the balcony' },
     ],
   },
   {
     title: 'Bedrooms',
     items: [
-      { src: bed1, alt: 'Carpeted bedroom with a large window and abundant natural light' },
-      { src: bed2, alt: 'Corner bedroom with two windows, neutral walls, and plush carpet' },
+      { src: primaryBed, alt: 'Primary bedroom staged with a queen bed, matching nightstands and lamps, and a bright window' },
+      { src: bedroom2, alt: 'Second bedroom furnished with a twin bed and a large sunny window' },
+      { src: office, alt: 'Flexible room staged as a home office with a desk and chair beside a window framing the mountains' },
     ],
   },
   {
     title: 'Bathrooms',
     items: [
-      { src: bathShower, alt: 'Modern bathroom with a glass walk-in shower, hexagon tile, matte-black fixtures, and a quartz vanity' },
-      { src: bathTub, alt: 'Full bathroom with a soaking tub and shower combination, matte-black fixtures, and a quartz-topped vanity' },
+      { src: bathShower, alt: 'Bathroom with a glass walk-in shower, hexagon tile, matte-black fixtures, and a quartz vanity' },
+      { src: bathTub, alt: 'Full bathroom with a soaking tub and shower, matte-black fixtures, a quartz-topped vanity, and styled towels and greenery' },
     ],
   },
   {
-    title: 'Features & Views',
+    title: 'Features',
     items: [
       { src: closet, alt: 'Walk-in closet with built-in white shelving and a hanging rod' },
-      { src: laundry, alt: 'In-unit laundry nook with washer and dryer hookups over wood-look flooring' },
-      { src: stair, alt: 'Carpeted stairwell lit by a tall window showing the Millcreek foothills in the distance' },
     ],
   },
 ];
