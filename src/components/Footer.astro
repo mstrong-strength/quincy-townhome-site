@@ -2,15 +2,15 @@
 import { Image } from 'astro:assets';
 import { property } from '../data/property';
 import Tbd from './Tbd.astro';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-dark.png';
 const year = 2026;
 ---
 <footer class="border-t border-line bg-paper">
   <div class="mx-auto max-w-7xl px-5 py-14 lg:px-8">
     <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
       <div>
-        <a href="#top" class="inline-flex items-center" aria-label={`${property.name} home`}>
-          <Image src={logo} alt="Quincy Townhomes" widths={[200, 320, 400]} sizes="200px" loading="lazy" class="h-12 w-auto" />
+        <a href="#top" class="inline-flex items-center overflow-hidden rounded-lg" aria-label={`${property.name} home`}>
+          <Image src={logo} alt="Quincy Townhomes" widths={[200, 320, 372]} sizes="220px" loading="lazy" class="h-14 w-auto" />
         </a>
         <p class="mt-3 text-sm text-ink-soft">{property.address.full}</p>
         <p class="mt-1 text-sm text-ink-soft">
