@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { property } from '../data/property';
-import mapImg from '../assets/availability-map.jpg';
+import mapImg from '../assets/availability-map.png';
 const { availability } = property;
 ---
 <section id="availability" class="scroll-mt-20 bg-sand">
@@ -16,7 +16,7 @@ const { availability } = property;
       <!-- Site plan -->
       <div class="reveal lg:col-span-3">
         <div class="overflow-hidden rounded-2xl border border-line bg-white p-3 shadow-sm">
-          <Image src={mapImg} alt="Site plan of the Quincy Townhomes community showing each building and unit number, color-coded by floorplan type" widths={[480, 768, 1200]} sizes="(min-width:1024px) 55vw, 90vw" loading="lazy" class="w-full rounded-lg" />
+          <Image src={mapImg} alt="Color-coded site plan of the Quincy Townhomes community: each unit is labeled by address and number and marked green for available or red for leased" widths={[480, 768, 1200, 1673]} sizes="(min-width:1024px) 55vw, 90vw" loading="lazy" class="w-full rounded-lg" />
         </div>
         <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
           {availability.legend.map((l) => (
@@ -42,7 +42,7 @@ const { availability } = property;
               <div>
                 <p class="font-semibold text-ink">{u.unit}</p>
                 <p class="mt-0.5 text-sm text-ink-soft">
-                  {u.beds} bed · {u.baths} bath · {u.sqft} · <span class="font-medium text-ink">{u.rent}</span>
+                  {u.beds} bed · {u.baths} bath{u.sqft !== 'TBD' ? ` · ${u.sqft}` : ''} · <span class="font-medium text-ink">{u.rent}</span>
                 </p>
                 <span class="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-green-700">
                   <span class="inline-block h-2 w-2 rounded-full bg-green-500"></span>Available
