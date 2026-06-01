@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { property } from '../data/property';
 import heroImg from '../assets/photos/01-hero-exterior.jpg';
+import wordmark from '../assets/logo.png';
 ---
 
 <section id="top" class="relative isolate min-h-[88svh] w-full overflow-hidden bg-ink">
@@ -27,10 +28,18 @@ import heroImg from '../assets/photos/01-hero-exterior.jpg';
       </span>
     </div>
 
-    <h1 class="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
-      Quincy<br /><span class="text-brand">Townhomes</span>
+    <h1 class="inline-block w-fit rounded-2xl bg-white p-5 shadow-2xl sm:p-6">
+      <Image
+        src={wordmark}
+        alt="Quincy Townhomes"
+        widths={[280, 360, 440, 560]}
+        sizes="(min-width:1024px) 420px, (min-width:640px) 340px, 270px"
+        loading="eager"
+        fetchpriority="high"
+        class="block h-auto w-[270px] sm:w-[340px] lg:w-[420px]"
+      />
     </h1>
-    <p class="mt-5 max-w-xl text-lg font-medium text-white/90 sm:text-xl">{property.tagline}</p>
+    <p class="mt-6 max-w-xl text-lg font-medium text-white/90 sm:text-xl">{property.tagline}</p>
     <p class="mt-2 text-sm font-medium uppercase tracking-[0.18em] text-white/70">
       {property.address.full}
     </p>
