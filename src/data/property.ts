@@ -115,9 +115,9 @@ export const property = {
     note: 'Green units are available now; red are leased. Colors also indicate floorplan type (Unit 1 / Unit 2).',
     // Currently available units (green on the site plan). Update as units lease.
     units: [
-      // 4380 S 900 E #102 — leased 06/09/2026 (removed from list; update map PNG to reflect)
+      // 4380 S 900 E #102 — leased 06/09/2026 (removed from list; map updated)
+      // 4380 S 900 E #106 — leased 06/11/2026 (removed from list; map updated)
       { unit: '4380 S 900 E #105', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
-      { unit: '4380 S 900 E #106', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
       { unit: '4380 S 900 E #107', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
     ],
     isPlaceholder: false,
