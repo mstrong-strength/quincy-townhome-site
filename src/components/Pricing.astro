@@ -59,9 +59,8 @@ const { moveInFees, securityDeposit, dueAtMoveIn } = property;
       </div>
 
       <div class="flex flex-col justify-center rounded-2xl bg-ink p-7 text-white">
-        <span class="inline-flex w-fit items-center gap-2 rounded-full bg-brand px-3 py-1 text-xs font-bold uppercase tracking-wide text-ink">{property.offer}</span>
-        <p class="mt-4 font-display text-2xl font-semibold leading-snug">Your first two months are free.</p>
-        <p class="mt-2 text-white/70">Move in for ${moveInFees.total} in one-time fees plus a refundable ${securityDeposit.toLocaleString()} deposit — then settle in before your first month's rent is due.</p>
+        <p class="font-display text-2xl font-semibold leading-snug">Tour it today. Move in tomorrow.</p>
+        <p class="mt-2 text-white/70">Move in for ${moveInFees.total} in one-time fees plus a refundable ${securityDeposit.toLocaleString()} deposit. Call or text <a href={property.phoneHref} class="font-semibold text-brand hover:underline">{property.phone}</a> to set up a showing.</p>
       </div>
     </div>
   </div>

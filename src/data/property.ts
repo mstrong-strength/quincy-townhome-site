@@ -13,9 +13,7 @@ const ok = (value: string): Maybe => ({ value });
 
 export const property = {
   name: 'Quincy Townhomes',
-  tagline: 'Brand new. 2 months free. Move in tomorrow.',
-  offer: '2 Months Free',
-  offerLong: 'Special offer: 2 months free, starts now.',
+  tagline: 'Brand new. Move in tomorrow.',
 
   address: {
     street: '4372 S 900 E',
@@ -117,7 +115,7 @@ export const property = {
     units: [
       // 4380 S 900 E #102 — leased 06/09/2026 (removed from list; map updated)
       // 4380 S 900 E #106 — leased 06/11/2026 (removed from list; map updated)
-      { unit: '4380 S 900 E #105', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      // 4380 S 900 E #105 — leased 06/11/2026 (removed from list; map updated)
       { unit: '4380 S 900 E #107', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
     ],
     isPlaceholder: false,

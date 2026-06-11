@@ -4,10 +4,10 @@ import { property } from '../data/property';
 import { getImage } from 'astro:assets';
 import heroImg from '../assets/photos/01-hero-exterior.jpg';
 
-const title = `${property.name} — New 3-Bed Townhomes in Millcreek, UT | 2 Months Free`;
+const title = `${property.name} — New 3-Bed Townhomes in Millcreek, UT`;
 const description =
   `Brand-new 3-bedroom townhomes at ${property.address.full}. Open floor plan, ` +
-  `chef's kitchen, in-unit washer/dryer, attached garage. Starting at ${property.rent}/mo — 2 months free.`;
+  `chef's kitchen, in-unit washer/dryer, attached garage. Starting at ${property.rent}/mo.`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 
 // Pre-render an OG image from the hero
