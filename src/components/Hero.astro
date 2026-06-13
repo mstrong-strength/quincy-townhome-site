@@ -17,27 +17,38 @@ import heroImg from '../assets/photos/01-hero-exterior.jpg';
   <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink/85 via-ink/45 to-ink/35"></div>
 
   <div class="mx-auto flex min-h-[88svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-28 lg:px-8 lg:pb-24">
+    <!-- Waiting-list ribbon -->
+    <div class="mb-5">
+      <span class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 text-sm font-bold uppercase tracking-wide text-ink shadow-lg">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6Z"/></svg>
+        Join the Waiting List
+      </span>
+    </div>
+
     <h1 class="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
       Quincy<br /><span class="text-brand">Townhomes</span>
     </h1>
-    <p class="mt-5 max-w-xl text-lg font-medium text-white/90 sm:text-xl">{property.tagline}</p>
+    <p class="mt-5 max-w-xl text-lg font-medium text-white/90 sm:text-xl">
+      Brand-new townhomes in Millcreek — now fully leased. Get on the waiting list and we'll reach out the moment a home opens up.
+    </p>
     <p class="mt-2 text-sm font-medium uppercase tracking-[0.18em] text-white/70">
       {property.address.full}
     </p>
 
     <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
       <a
-        href="#availability"
+        href={property.phoneHref}
         class="inline-flex items-center justify-center rounded-full bg-brand px-7 py-3.5 text-base font-semibold text-ink shadow-lg transition-transform hover:scale-[1.03]"
-        >View Availability</a
+        >Call to Join</a
       >
       <a
-        href={property.links.apply}
-        target="_blank"
-        rel="noopener"
+        href={property.smsHref}
         class="inline-flex items-center justify-center rounded-full border-2 border-white/70 bg-white/5 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-ink"
-        >Apply Now</a
+        >Text to Join</a
       >
     </div>
+    <p class="mt-4 text-sm text-white/75">
+      or call/text <a href={property.phoneHref} class="font-semibold text-white hover:underline">{property.phone}</a>
+    </p>
   </div>
 </section>
