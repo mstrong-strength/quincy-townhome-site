@@ -25,7 +25,7 @@ export const property = {
   beds: '3 Beds',
   baths: ok('2.5'),             // confirmed: 2.5 baths
   sqft: tbd('Sq Ft'),           // ⚠️ confirm square footage
-  rent: '$2,499',
+  rent: '$2,625',
   rentSuffix: '/mo',
   rentNote: 'Starting at',
 
@@ -104,19 +104,19 @@ export const property = {
   // Availability — site plan legend + units.
   // ⚠️ Mark each unit available/leased and confirm which are open before go-live.
   availability: {
+    fullyLeased: true, // all units leased as of 06/11/2026 — shows waitlist
     legend: [
-      { label: 'Available', swatch: '#22c55e' },
       { label: 'Leased', swatch: '#ef4444' },
       { label: 'Unit 1', swatch: '#f4c6d4' },
       { label: 'Unit 2 (3 bed)', swatch: '#bfe3ec' },
     ],
-    note: 'Green units are available now; red are leased. Colors also indicate floorplan type (Unit 1 / Unit 2).',
-    // Currently available units (green on the site plan). Update as units lease.
+    note: 'Every home is currently leased. Colors indicate floorplan type (Unit 1 / Unit 2).',
+    // Currently available units (green on the site plan). Update as units open up.
     units: [
-      // 4380 S 900 E #102 — leased 06/09/2026 (removed from list; map updated)
-      // 4380 S 900 E #106 — leased 06/11/2026 (removed from list; map updated)
-      // 4380 S 900 E #105 — leased 06/11/2026 (removed from list; map updated)
-      { unit: '4380 S 900 E #107', beds: '3', baths: '2.5', sqft: 'TBD', rent: '$2,499/mo', status: 'available' as const },
+      // 4380 S 900 E #102 — leased 06/09/2026
+      // 4380 S 900 E #106 — leased 06/11/2026
+      // 4380 S 900 E #105 — leased 06/11/2026
+      // 4380 S 900 E #107 — leased 06/11/2026 (last unit; community fully leased)
     ],
     isPlaceholder: false,
   },

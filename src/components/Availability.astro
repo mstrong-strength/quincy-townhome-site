@@ -3,12 +3,17 @@ import { Image } from 'astro:assets';
 import { property } from '../data/property';
 import mapImg from '../assets/availability-map.png';
 const { availability } = property;
+const fullyLeased = availability.fullyLeased || availability.units.length === 0;
 ---
 <section id="availability" class="scroll-mt-20 bg-sand">
   <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
     <header class="reveal mb-10 max-w-2xl">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dark">Availability</p>
-      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Find your unit</h2>
+      {fullyLeased ? (
+        <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">We're fully leased</h2>
+      ) : (
+        <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Find your unit</h2>
+      )}
       <p class="mt-3 text-ink-soft">{availability.note}</p>
     </header>
 
@@ -16,7 +21,7 @@ const { availability } = property;
       <!-- Site plan -->
       <div class="reveal lg:col-span-3">
         <div class="overflow-hidden rounded-2xl border border-line bg-white p-3 shadow-sm">
-          <Image src={mapImg} alt="Color-coded site plan of the Quincy Townhomes community: each unit is labeled by address and number and marked green for available or red for leased" widths={[480, 768, 1200, 1673]} sizes="(min-width:1024px) 55vw, 90vw" loading="lazy" class="w-full rounded-lg" />
+          <Image src={mapImg} alt="Color-coded site plan of the Quincy Townhomes community: each unit is labeled by address and number and marked by floorplan type and lease status" widths={[480, 768, 1200, 1673]} sizes="(min-width:1024px) 55vw, 90vw" loading="lazy" class="w-full rounded-lg" />
         </div>
         <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
           {availability.legend.map((l) => (
@@ -28,34 +33,43 @@ const { availability } = property;
         </ul>
       </div>
 
-      <!-- Unit list -->
+      <!-- Right column -->
       <div class="reveal lg:col-span-2">
-        {availability.isPlaceholder && (
-          <div class="mb-4 rounded-lg border border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-            <strong>Placeholder units.</strong> Replace with the real available units (and confirm bath/sqft) in
-            <code class="rounded bg-amber-100 px-1">src/data/property.ts</code> before go-live.
+        {fullyLeased ? (
+          <div class="flex h-full flex-col justify-center rounded-2xl border border-brand/40 bg-brand/10 p-7 sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-dark">Join the waiting list</p>
+            <h3 class="mt-3 font-display text-2xl font-semibold text-ink sm:text-3xl">Every home is leased — for now.</h3>
+            <p class="mt-3 text-ink-soft">Quincy Townhomes is fully leased. Get on the waiting list and we'll reach out the moment a home opens up.</p>
+            <a href={property.phoneHref} class="mt-5 inline-block text-3xl font-bold text-brand-dark hover:underline">{property.phone}</a>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a href={property.phoneHref} class="rounded-full bg-brand px-7 py-3 text-center text-base font-semibold text-ink transition-transform hover:scale-[1.03]">Call to join</a>
+              <a href={property.smsHref} class="rounded-full border border-brand/50 bg-white px-7 py-3 text-center text-base font-semibold text-brand-dark transition-colors hover:bg-brand hover:text-ink">Text to join</a>
+            </div>
           </div>
+        ) : (
+          <>
+            <ul class="space-y-3">
+              {availability.units.map((u) => (
+                <li class="flex items-center justify-between gap-4 rounded-xl border border-line bg-white p-4 shadow-sm">
+                  <div>
+                    <p class="font-semibold text-ink">{u.unit}</p>
+                    <p class="mt-0.5 text-sm text-ink-soft">
+                      {u.beds} bed · {u.baths} bath{u.sqft !== 'TBD' ? ` · ${u.sqft}` : ''} · <span class="font-medium text-ink">{u.rent}</span>
+                    </p>
+                    <span class="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-green-700">
+                      <span class="inline-block h-2 w-2 rounded-full bg-green-500"></span>Available
+                    </span>
+                  </div>
+                  <a href={property.links.apply} target="_blank" rel="noopener"
+                    class="shrink-0 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]">Apply</a>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-4 text-sm text-ink-soft">
+              To tour a home, <a href={property.phoneHref} class="font-semibold text-brand-dark hover:underline">call or text {property.phone}</a>.
+            </p>
+          </>
         )}
-        <ul class="space-y-3">
-          {availability.units.map((u) => (
-            <li class="flex items-center justify-between gap-4 rounded-xl border border-line bg-white p-4 shadow-sm">
-              <div>
-                <p class="font-semibold text-ink">{u.unit}</p>
-                <p class="mt-0.5 text-sm text-ink-soft">
-                  {u.beds} bed · {u.baths} bath{u.sqft !== 'TBD' ? ` · ${u.sqft}` : ''} · <span class="font-medium text-ink">{u.rent}</span>
-                </p>
-                <span class="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-green-700">
-                  <span class="inline-block h-2 w-2 rounded-full bg-green-500"></span>Available
-                </span>
-              </div>
-              <a href={property.links.apply} target="_blank" rel="noopener"
-                class="shrink-0 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]">Apply</a>
-            </li>
-          ))}
-        </ul>
-        <p class="mt-4 text-sm text-ink-soft">
-          To tour a home, <a href={property.phoneHref} class="font-semibold text-brand-dark hover:underline">call or text {property.phone}</a>.
-        </p>
       </div>
     </div>
   </div>
