@@ -1,43 +1,83 @@
 ---
 import { Image } from 'astro:assets';
-import l1 from '../assets/floorplans/level-1.jpg';
-import l2 from '../assets/floorplans/level-2.jpg';
-import l3 from '../assets/floorplans/level-3.jpg';
-const levels = [
-  { id: 'l1', label: 'Level 1', img: l1, alt: 'Level 1 floorplan of the three-bedroom Quincy townhome, including the attached garage and entry' },
-  { id: 'l2', label: 'Level 2', img: l2, alt: 'Level 2 floorplan showing the open-concept kitchen, living room, and balcony' },
-  { id: 'l3', label: 'Level 3', img: l3, alt: 'Level 3 floorplan showing the three upstairs bedrooms, bathrooms, and laundry' },
+// Unit 2 — 3 bedroom (the primary, photographed layout)
+import u2l1 from '../assets/floorplans/level-1.jpg';
+import u2l2 from '../assets/floorplans/level-2.jpg';
+import u2l3 from '../assets/floorplans/level-3.jpg';
+// Unit 1 — 2 bedroom
+import u1l1 from '../assets/floorplans/unit1-level-1.jpg';
+import u1l2 from '../assets/floorplans/unit1-level-2.jpg';
+import u1l3 from '../assets/floorplans/unit1-level-3.jpg';
+
+const units = [
+  {
+    id: 'u2',
+    tab: '3 Bedroom',
+    sub: 'Unit 2 · 3 bed / 2.5 bath',
+    levels: [
+      { label: 'Level 1', img: u2l1, alt: 'Unit 2, Level 1 floorplan: attached two-car garage and entry' },
+      { label: 'Level 2', img: u2l2, alt: 'Unit 2, Level 2 floorplan: open kitchen, living room, and balcony' },
+      { label: 'Level 3', img: u2l3, alt: 'Unit 2, Level 3 floorplan: three bedrooms, bathrooms, and laundry' },
+    ],
+  },
+  {
+    id: 'u1',
+    tab: '2 Bedroom',
+    sub: 'Unit 1 · 2 bed',
+    levels: [
+      { label: 'Level 1', img: u1l1, alt: 'Unit 1, Level 1 floorplan: attached two-car garage with an entry flex space and a half bath' },
+      { label: 'Level 2', img: u1l2, alt: 'Unit 1, Level 2 floorplan: open kitchen, living, and dining opening to a covered balcony' },
+      { label: 'Level 3', img: u1l3, alt: 'Unit 1, Level 3 floorplan: two bedrooms, two bathrooms, and laundry' },
+    ],
+  },
 ];
 ---
 <section id="floorplan" class="scroll-mt-20 bg-paper">
   <div class="mx-auto max-w-5xl px-5 py-20 lg:px-8 lg:py-24">
     <header class="reveal mb-8 max-w-2xl">
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dark">Floorplan</p>
-      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Three levels, three bedrooms</h2>
-      <p class="mt-3 text-ink-soft">A garage-entry main level, an open second floor for living, and bedrooms up top.</p>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-dark">Floorplans</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Two layouts, three levels each</h2>
+      <p class="mt-3 text-ink-soft">A spacious 3-bedroom and a 2-bedroom — each with a garage-entry main level, an open living floor, and bedrooms up top.</p>
     </header>
 
     <div class="reveal" data-floorplan>
-      <div class="flex gap-2 rounded-full border border-line bg-sand p-1" role="tablist" aria-label="Floorplan levels">
-        {levels.map((lv, i) => (
+      <!-- Unit selector -->
+      <div class="flex flex-col gap-2 sm:flex-row sm:gap-3" role="tablist" aria-label="Floorplan layouts">
+        {units.map((u, i) => (
           <button
             type="button"
             role="tab"
-            id={`tab-${lv.id}`}
-            aria-controls={`panel-${lv.id}`}
             aria-selected={i === 0 ? 'true' : 'false'}
-            data-fp-tab={lv.id}
-            class={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${i === 0 ? 'bg-white text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
-          >{lv.label}</button>
+            data-unit-tab={u.id}
+            class={`flex-1 rounded-xl border px-4 py-3 text-left transition-colors ${i === 0 ? 'border-brand bg-brand/10' : 'border-line bg-white hover:border-brand/50'}`}
+          >
+            <span class="block font-semibold text-ink" data-unit-tab-title>{u.tab}</span>
+            <span class="block text-sm text-ink-soft">{u.sub}</span>
+          </button>
         ))}
       </div>
 
-      <div class="mt-6 overflow-hidden rounded-2xl border border-line bg-white p-4 shadow-sm">
-        {levels.map((lv, i) => (
-          <div id={`panel-${lv.id}`} role="tabpanel" aria-labelledby={`tab-${lv.id}`} data-fp-panel={lv.id} class={i === 0 ? '' : 'hidden'}>
-            <Image src={lv.img} alt={lv.alt} widths={[480, 768, 1024]} sizes="(min-width:1024px) 60vw, 90vw" loading="lazy" class="mx-auto w-full max-w-3xl" />
-          </div>
+      <!-- Level tabs -->
+      <div class="mt-5 flex gap-2 rounded-full border border-line bg-sand p-1" role="tablist" aria-label="Levels">
+        {['Level 1', 'Level 2', 'Level 3'].map((lvl, i) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-level-tab={i}
+            class={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${i === 0 ? 'bg-white text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
+          >{lvl}</button>
         ))}
+      </div>
+
+      <!-- Panels: one per unit+level; JS shows the active combo -->
+      <div class="mt-6 overflow-hidden rounded-2xl border border-line bg-white p-4 shadow-sm">
+        {units.map((u, ui) => u.levels.map((lv, li) => (
+          <div data-panel-unit={u.id} data-panel-level={li} class={ui === 0 && li === 0 ? '' : 'hidden'}>
+            <Image src={lv.img} alt={lv.alt} widths={[480, 768, 1024]} sizes="(min-width:1024px) 60vw, 90vw" loading="lazy" class="mx-auto w-full max-w-3xl rounded-lg" />
+            <p class="mt-3 text-center text-sm text-ink-soft">{u.sub} — {lv.label}</p>
+          </div>
+        )))}
       </div>
     </div>
   </div>
@@ -47,22 +87,43 @@ const levels = [
   (function () {
     var root = document.querySelector('[data-floorplan]');
     if (!root) return;
-    var tabs = root.querySelectorAll('[data-fp-tab]');
-    var panels = root.querySelectorAll('[data-fp-panel]');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var id = tab.getAttribute('data-fp-tab');
-        tabs.forEach(function (t) {
-          var active = t === tab;
-          t.setAttribute('aria-selected', String(active));
-          t.classList.toggle('bg-white', active);
-          t.classList.toggle('text-ink', active);
-          t.classList.toggle('shadow-sm', active);
-          t.classList.toggle('text-ink-soft', !active);
+    var unitTabs = root.querySelectorAll('[data-unit-tab]');
+    var levelTabs = root.querySelectorAll('[data-level-tab]');
+    var panels = root.querySelectorAll('[data-panel-unit]');
+    var current = { unit: unitTabs[0] && unitTabs[0].getAttribute('data-unit-tab'), level: '0' };
+
+    function render() {
+      panels.forEach(function (p) {
+        var match = p.getAttribute('data-panel-unit') === current.unit && p.getAttribute('data-panel-level') === current.level;
+        p.classList.toggle('hidden', !match);
+      });
+    }
+    unitTabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        current.unit = t.getAttribute('data-unit-tab');
+        unitTabs.forEach(function (x) {
+          var active = x === t;
+          x.setAttribute('aria-selected', String(active));
+          x.classList.toggle('border-brand', active);
+          x.classList.toggle('bg-brand/10', active);
+          x.classList.toggle('border-line', !active);
+          x.classList.toggle('bg-white', !active);
         });
-        panels.forEach(function (p) {
-          p.classList.toggle('hidden', p.getAttribute('data-fp-panel') !== id);
+        render();
+      });
+    });
+    levelTabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        current.level = t.getAttribute('data-level-tab');
+        levelTabs.forEach(function (x) {
+          var active = x === t;
+          x.setAttribute('aria-selected', String(active));
+          x.classList.toggle('bg-white', active);
+          x.classList.toggle('text-ink', active);
+          x.classList.toggle('shadow-sm', active);
+          x.classList.toggle('text-ink-soft', !active);
         });
+        render();
       });
     });
   })();
